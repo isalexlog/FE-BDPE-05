@@ -26,6 +26,6 @@ Add this field to EmployeeDto in Java part of the project
 
 2019-05-21 In Class: fixing ajax async calls bugs, creating new user from form, updating employee's table
 
-Next class:
-4. Edit employee data - continue
+2019-05-23 In class: edit employee (FE + BE), delete employee (BE)
+
 5. Delete employee

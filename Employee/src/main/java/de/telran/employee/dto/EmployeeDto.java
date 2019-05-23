@@ -1,12 +1,15 @@
 package de.telran.employee.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+
+import java.util.Date;
 
 public class EmployeeDto extends DtoWithId  {
 
     private String firstName;
     private String lastName;
-    private String birthDate;
+    private Date birthDate;
     private Integer position;
 
     public String getFirstName() {
@@ -25,11 +28,12 @@ public class EmployeeDto extends DtoWithId  {
         this.lastName = lastName;
     }
 
-    public String getBirthDate() {
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 

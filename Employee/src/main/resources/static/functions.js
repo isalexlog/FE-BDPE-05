@@ -27,9 +27,18 @@ var createEmployeeTable = function(employees, mapPosition) {
 
         var position = mapPosition[employee.position];
         html += '<td>' + position + '</td>';
-        html += '<td><button type="button" name="edit" id="editEmployee_'+ employee.id +'">Edit</button></td> ';
+        html += '<td>' +
+            '<button ' +
+                'type="button" ' +
+                'name="edit" ' +
+                'id="editEmployee_'+ employee.id +'"' +
+                'onclick="retrieveEmployeeDataForEdit(' + employee.id +')"' +
+                '>Edit</button>' +
+            '</td> ';
 
-        html += '</tr>'
+        html += '</tr>';
+        
+
     });
 
     return html;
@@ -81,4 +90,29 @@ var fillEmployeesTable = function (mapPosition) {
 var cleanEmployeeForm = function($form) {
     $form.find("input[type=text], input[type=date], textarea").val("");
     $form.find("select").val(0);
+};
+
+var fillEmployeeForm = function(employee) {
+    $('#employee_form input[name=id]').val(employee.id);
+    $('#employee_form input[name=firstName]').val(employee.firstName);
+    $('#employee_form input[name=lastName]').val(employee.lastName);
+    $('#employee_form input[name=birthDate]').val(employee.birthDate);
+    $('#employee_form select[name=position]').val(employee.position);
+};
+
+var retrieveEmployeeDataForEdit = function(id) {
+  $.ajax({
+      url: "/employee/" + id,
+      type: 'GET',
+      dataType: 'json',
+      contentType: 'application/json',
+      success: function(employee) {
+          console.log(employee);
+          fillEmployeeForm(employee);
+          $("#employee_form input[type=submit]").val("Update employee");
+      },
+      error: function() {
+          alert("Can't find employee with id = " + id);
+      }
+  });
 };

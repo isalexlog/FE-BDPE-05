@@ -33,6 +33,15 @@ public class AbstractRepository<T extends DtoWithId> {
         return repository.get(id);
     }
 
+    public T updateRecord(T object) {
+        repository.put(object.getId(), object);
+        return repository.get(object.getId());
+    }
+
+    public T deleteRecord(Integer id) {
+        return repository.remove(id);
+    }
+
     private int generateNewId() {
         return ++lastId;
     }

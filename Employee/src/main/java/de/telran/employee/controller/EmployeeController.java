@@ -27,8 +27,24 @@ public class EmployeeController {
         return employee.getId();
     }
 
+    @PutMapping("")
+    public Integer updateEmployee(@RequestBody EmployeeDto employee) {
+        employeeRepository.updateRecord(employee);
+        return employee.getId();
+    }
+
+    @DeleteMapping("/{id}")
+    public Integer deleteEmployee(@PathVariable Integer id) {
+        return employeeRepository.deleteRecord(id).getId();
+    }
+
     @GetMapping("")
     public List<EmployeeDto> getAllEmployees() {
         return employeeRepository.getAllRecords();
+    }
+
+    @GetMapping("/{id}")
+    public EmployeeDto getEmployees(@PathVariable Integer id) {
+        return employeeRepository.getById(id);
     }
 }

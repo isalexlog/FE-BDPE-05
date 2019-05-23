@@ -3,32 +3,32 @@ $(document).ready(function () {
 
     var mapPosition;
 
+    var inputs = [
+        {
+            element: 'input',
+            name: 'firstName',
+            restrictedValue: ''
+        },
+        {
+            element: 'input',
+            name: 'lastName',
+            restrictedValue: ''
+        },
+        {
+            element: 'input',
+            name: 'birthDate',
+            restrictedValue: ''
+        },
+        {
+            element: 'select',
+            name: 'position',
+            restrictedValue: 0
+        }
+    ];
+
     var $employeeForm = $('#employee_form');
     $employeeForm.submit(function(event) {
         event.preventDefault();
-
-        var inputs = [
-            {
-                element: 'input',
-                name: 'firstName',
-                restrictedValue: ''
-            },
-            {
-                element: 'input',
-                name: 'lastName',
-                restrictedValue: ''
-            },
-            {
-                element: 'input',
-                name: 'birthDate',
-                restrictedValue: ''
-            },
-            {
-                element: 'select',
-                name: 'position',
-                restrictedValue: 0
-            }
-        ];
 
         inputs.forEach(function (input) {
             var $currentInput = getInput(input);
@@ -39,13 +39,21 @@ $(document).ready(function () {
 
         if (!isFormValid(inputs))
             return;
+        var formData = $employeeForm.serializeToJSON();
+        var id = $('#employee_form input[name=id]').val();
+        var method = 'POST';
+        if (id) {
+            formData['id'] = id;
+            method = 'PUT';
+        }
+        var payloadAsString = JSON.stringify(formData);
 
         $.ajax({
             url: "/employee",
-            type: 'POST',
+            type: method,
             dataType: 'json',
             contentType: 'application/json',
-            data: JSON.stringify($employeeForm.serializeToJSON()),
+            data: payloadAsString,
             success: function(data) {
                 fillEmployeesTable(mapPosition);
                 cleanEmployeeForm($('#employee_form'));
@@ -70,12 +78,6 @@ $(document).ready(function () {
         error: function() {
             alert("Can't download employees");
         }
-    });
-
-    $('table#employees button[name=edit]').each(function () {
-        $(this).click(function (event) {
-            console.log(event.target.id.split("_")[1]);
-        })
     });
 
 });
