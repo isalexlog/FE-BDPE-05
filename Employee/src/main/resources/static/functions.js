@@ -31,9 +31,16 @@ var createEmployeeTable = function(employees, mapPosition) {
             '<button ' +
                 'type="button" ' +
                 'name="edit" ' +
-                'id="editEmployee_'+ employee.id +'"' +
                 'onclick="retrieveEmployeeDataForEdit(' + employee.id +')"' +
-                '>Edit</button>' +
+                '>Edit' +
+            '</button>';
+        html +=
+            '<button ' +
+                'type="button" ' +
+                'name="delete" ' +
+                'onclick="deleteEmployee(' + employee.id +')"' +
+                '>Delete' +
+            '</button>' +
             '</td> ';
 
         html += '</tr>';
