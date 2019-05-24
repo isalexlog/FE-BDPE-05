@@ -1,7 +1,4 @@
 $(document).ready(function () {
-    console.log('kuku');
-
-    var mapPosition;
 
     var inputs = [
         {
@@ -55,11 +52,12 @@ $(document).ready(function () {
             contentType: 'application/json',
             data: payloadAsString,
             success: function(data) {
-                fillEmployeesTable(mapPosition);
+                fillEmployeesTable();
                 cleanEmployeeForm($('#employee_form'));
+                $('#employee_form input[type=submit]').val('Create employee');
             },
             error: function() {
-                alert("Creating new employee failed");
+                alert(`Action ${method} with new employee failed`);
             }
         });
     });
@@ -70,10 +68,9 @@ $(document).ready(function () {
         dataType: 'json',
         contentType: 'application/json',
         success: function(positions) {
-            console.log(positions);
             fillEmployeeFormSelectPositionOptions(positions);
             mapPosition = createPositionMapper(positions);
-            fillEmployeesTable(mapPosition);
+            fillEmployeesTable();
         },
         error: function() {
             alert("Can't download employees");

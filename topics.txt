@@ -28,4 +28,4 @@ Add this field to EmployeeDto in Java part of the project
 
 2019-05-23 In class: edit employee (FE + BE), delete employee (BE)
 
-5. Delete employee
+2019-05-24 In class: delete employee from front-end functionality, small bugs fixing, clearing off console logs

@@ -78,14 +78,15 @@ var fillEmployeeFormSelectPositionOptions = function (employeePositions) {
     $('select#position').html(createSelectOptions(employeePositions, 'Please select employee role'));
 };
 
-var fillEmployeesTable = function (mapPosition) {
+var mapPosition;
+
+var fillEmployeesTable = function () {
     $.ajax({
         url: "/employee",
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json',
         success: function(employees) {
-            console.log(employees);
             $('table#employees tbody').html(createEmployeeTable(employees, mapPosition));
         },
         error: function() {
@@ -114,7 +115,6 @@ var retrieveEmployeeDataForEdit = function(id) {
       dataType: 'json',
       contentType: 'application/json',
       success: function(employee) {
-          console.log(employee);
           fillEmployeeForm(employee);
           $("#employee_form input[type=submit]").val("Update employee");
       },
@@ -122,4 +122,25 @@ var retrieveEmployeeDataForEdit = function(id) {
           alert("Can't find employee with id = " + id);
       }
   });
+};
+
+var deleteEmployee = function(id) {
+
+    var answer = confirm(`Are you sure to delete employee with id=${id}?`);
+
+    if (!answer)
+        return;
+
+    $.ajax({
+        url: "/employee/" + id,
+        type: 'DELETE',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function(employee) {
+            fillEmployeesTable();
+        },
+        error: function() {
+            alert("Can't delete employee with id = " + id);
+        }
+    });
 };
