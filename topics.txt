@@ -31,3 +31,9 @@ Add this field to EmployeeDto in Java part of the project
 2019-05-24 In class: delete employee from front-end functionality, small bugs fixing, clearing off console logs
 
 2019-05-24 Home work: create form for adding employee role
+
+2019-05-28 In Class: Angular:
+- created angular app
+- created routing
+- created components: app-component, header, footer
+- created navigation in header app
