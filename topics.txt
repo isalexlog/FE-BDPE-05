@@ -37,3 +37,11 @@ Add this field to EmployeeDto in Java part of the project
 - created routing
 - created components: app-component, header, footer
 - created navigation in header app
+
+2019-05-31 In Class: Angular:
+- creating reacting form
+- FormTemplate: ngModel - double binding
+- value binding
+- events handling
+
+2019-05-31 HomeWork: create calculator component (like in Windows)

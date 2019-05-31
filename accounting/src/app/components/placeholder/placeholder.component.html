@@ -1,3 +1,15 @@
-<p>
-  placeholder works!
-</p>
+<div>
+  {{greeting}}
+</div>
+
+<input type="text" [(ngModel)]="counter">
+
+<div>
+  <button (click)="decrease($event)">-</button>
+  {{ counter }}
+  <button (click)="increase($event)">+</button>
+</div>
+
+<div>
+  <button (mouseenter)="showAlert($event)">kuku button</button>
+</div>
