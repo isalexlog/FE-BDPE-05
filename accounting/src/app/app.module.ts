@@ -9,8 +9,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { SignupComponent } from './components/signup/signup.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SignupComponent } from './layouts/signup/signup.component';
+import { EditUserComponent } from './layouts/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    SignupComponent
+    UserFormComponent,
+    SignupComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
