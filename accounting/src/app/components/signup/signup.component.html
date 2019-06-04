@@ -3,6 +3,15 @@
     <div class="form-group">
       <label>First name</label>
       <input type="text" class="form-control" formControlName="firstName">
+      <div
+        *ngIf="signupForm.controls['firstName'].invalid
+                &&
+               (signupForm.controls['firstName'].dirty
+               || signupForm.controls['firstName'].touched
+               )"
+        class="alert alert-danger">
+        First name is required field
+      </div>
     </div>
     <div>
       <div>
@@ -42,6 +51,9 @@
       </div>
     </div>
   </form>
+  <div>
+    {{ signupForm.controls['firstName'].valid | json}}
+  </div>
 </div>
 
 <!--private String firstName;
