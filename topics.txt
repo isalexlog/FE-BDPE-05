@@ -45,3 +45,17 @@ Add this field to EmployeeDto in Java part of the project
 - events handling
 
 2019-05-31 HomeWork: create calculator component (like in Windows)
+
+Plan:
+- Create signup layout
+- Rename "signup" component to the "user form" component
+- "User form" component to receive "UserDto" as a parameter and to emit the event containing UserDto
+- "invalid", "dirty", "touched" form field state
+- Add validators to the fields:
+    - firstName - required
+    - lastName - required
+    - birthDate - required
+    - email - required, if email is valid
+    - phone number - required
+- Show the validation errors below the form fields
+- Do not allow to submit the form if one of the fields contains validation errors
