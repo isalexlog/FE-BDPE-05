@@ -1,1 +1,5 @@
-<app-user-form [registration]="false" [userDto]="userDto"></app-user-form>
+<app-user-form
+  submitButtonLabel="Update"
+  [userDto]="userDto"
+  (submitUser)="onUserSubmit($event)"
+></app-user-form>

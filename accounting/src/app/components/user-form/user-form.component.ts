@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserDto} from '../../dto/UserDto';
 
@@ -10,53 +10,62 @@ import {UserDto} from '../../dto/UserDto';
 export class UserFormComponent implements OnInit {
 
   signupForm: FormGroup;
-  submitButtonLabel: string;
 
   @Input()
-  registration = false;
+  submitButtonLabel = 'Register';
 
   @Input()
   userDto: UserDto;
+
+  @Output()
+  submitUser: EventEmitter<UserDto> = new EventEmitter();
 
   constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    this.submitButtonLabel = this.registration
-      ? 'Register'
-      : 'Update';
-
-    console.log(this.userDto);
     this.createForm();
   }
 
   createForm() {
     this.signupForm = this.fb.group({
+      id: [
+        null
+      ],
       firstName: [
-        this.userDto.firstName, [
+        null, [
           Validators.required
         ]
       ],
       lastName: [
-        this.userDto.lastName, [
+        null, [
           Validators.required
         ]
       ],
       birthDate: [
-        this.userDto.birthDate
+        null, [
+          Validators.required
+        ]
       ],
       email: [
-        this.userDto.email
+        null, [
+          Validators.required
+        ]
       ],
       phone: [
-        this.userDto.phone
+        null, [
+          Validators.required
+        ]
       ]
     });
+
+    if (this.userDto) {
+      this.signupForm.setValue(this.userDto);
+    }
   }
 
   onSubmit($event) {
-    console.log($event);
-    console.log(this.signupForm.value);
+    this.submitUser.emit(this.signupForm.value);
   }
 
 }

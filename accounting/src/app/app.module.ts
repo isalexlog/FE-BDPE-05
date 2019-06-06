@@ -13,6 +13,8 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SignupComponent } from './layouts/signup/signup.component';
 import { EditUserComponent } from './layouts/edit-user/edit-user.component';
+import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,14 +26,16 @@ import { EditUserComponent } from './layouts/edit-user/edit-user.component';
     LoginComponent,
     UserFormComponent,
     SignupComponent,
-    EditUserComponent
+    EditUserComponent,
+    ValidationErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatMenuModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -56,9 +56,10 @@ Add this field to EmployeeDto in Java part of the project
     - lastName - required
 - Show the validation errors below the form fields
 
-Plan:
+2019-06-06 In Class:
 - "User form" component to emit the event containing UserDto
-    - birthDate - required
-    - email - required, if email is valid
-    - phone number - required
 - Do not allow to submit the form if one of the fields contains validation errors
+- validation errors components
+- UserService (http)
+
+

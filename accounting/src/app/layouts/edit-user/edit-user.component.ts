@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserDto} from '../../dto/UserDto';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -10,10 +11,11 @@ export class EditUserComponent implements OnInit {
 
   userDto: UserDto;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.userDto = {
+      id: '1',
       firstName: 'Vasya',
       lastName: 'Pupkin',
       birthDate: '1980-01-01',
@@ -22,4 +24,12 @@ export class EditUserComponent implements OnInit {
     };
   }
 
+  onUserSubmit(userDto: UserDto) {
+    console.log(userDto);
+    this.userService.update(userDto).subscribe(
+      userDto => {
+        console.log(userDto);
+      }
+    );
+  }
 }

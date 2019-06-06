@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserDto} from '../../dto/UserDto';
 
 @Component({
   selector: 'app-signup',

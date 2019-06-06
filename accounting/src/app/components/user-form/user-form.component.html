@@ -1,38 +1,47 @@
 <div class="col-sm-6 col-lg-4" >
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit($event)">
     <div class="form-group">
+      <input type="text" class="form-control" formControlName="id" hidden>
+    </div>
+    <div class="form-group">
       <label>First name</label>
       <input type="text" class="form-control" formControlName="firstName">
-      <div
-        *ngIf="signupForm.controls['firstName'].invalid
-                &&
-               (signupForm.controls['firstName'].dirty || signupForm.controls['firstName'].touched)"
-        class="alert alert-danger">
-        First name is required field
-      </div>
+      <app-validation-error
+        [control]="signupForm.controls['firstName']"
+        errorMessage="First name is required field"
+      ></app-validation-error>
     </div>
     <div class="form-group">
       <label>Last name</label>
       <input type="text" class="form-control" formControlName="lastName">
-      <div
-        *ngIf="signupForm.controls['lastName'].invalid
-                &&
-               (signupForm.controls['lastName'].dirty || signupForm.controls['lastName'].touched)"
-        class="alert alert-danger">
-        Last name is required field
-      </div>
+      <app-validation-error
+        [control]="signupForm.controls['lastName']"
+        errorMessage="Last name is required field"
+      ></app-validation-error>
     </div>
     <div class="form-group">
         <label>Birth date</label>
         <input type="date" class="form-control" formControlName="birthDate">
+      <app-validation-error
+        [control]="signupForm.controls['birthDate']"
+        errorMessage="Birth date is required field"
+      ></app-validation-error>
     </div>
     <div class="form-group">
       <label>Email</label>
       <input type="email" class="form-control" formControlName="email">
+      <app-validation-error
+        [control]="signupForm.controls['email']"
+        errorMessage="email is required field"
+      ></app-validation-error>
     </div>
     <div class="form-group">
       <label>Phone number</label>
       <input type="text" class="form-control" formControlName="phone">
+      <app-validation-error
+        [control]="signupForm.controls['phone']"
+        errorMessage="Phone is required field"
+      ></app-validation-error>
     </div>
     <div>
       <div>
