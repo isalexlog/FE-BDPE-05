@@ -4,6 +4,13 @@ public class DtoWithId {
 
     protected Integer id;
 
+    public DtoWithId() {
+    }
+
+    public DtoWithId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }

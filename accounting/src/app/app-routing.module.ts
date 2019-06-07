@@ -7,13 +7,15 @@ import {Placeholder} from '@angular/compiler/src/i18n/i18n_ast';
 import {PlaceholderComponent} from './components/placeholder/placeholder.component';
 import {SignupComponent} from './layouts/signup/signup.component';
 import {EditUserComponent} from './layouts/edit-user/edit-user.component';
+import {UsersComponent} from './layouts/users/users.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'iddqd', component: PlaceholderComponent },
-  { path: 'edit-user', component: EditUserComponent }
+  { path: 'edit-user', component: EditUserComponent },
+  { path: 'users-layout', component: UsersComponent}
 ];
 
 @NgModule({

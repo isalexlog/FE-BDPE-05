@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class UserService {
 
-  private userUrl = '/users';
+  private userUrl = '/api/users';
 
   constructor(private http: HttpClient) { }
 
@@ -18,5 +18,9 @@ export class UserService {
 
   update(user: UserDto): Observable<UserDto> {
     return this.http.put<UserDto>(this.userUrl + '/' + user.id, user);
+  }
+
+  getAll(): Observable<UserDto[]> {
+    return this.http.get<UserDto[]>(this.userUrl);
   }
 }

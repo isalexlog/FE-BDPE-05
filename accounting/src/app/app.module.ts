@@ -15,6 +15,8 @@ import { SignupComponent } from './layouts/signup/signup.component';
 import { EditUserComponent } from './layouts/edit-user/edit-user.component';
 import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
 import {HttpClientModule} from '@angular/common/http';
+import { UsersComponent } from './layouts/users/users.component';
+import { UsersTableComponent } from './components/users-table/users-table.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {HttpClientModule} from '@angular/common/http';
     UserFormComponent,
     SignupComponent,
     EditUserComponent,
-    ValidationErrorComponent
+    ValidationErrorComponent,
+    UsersComponent,
+    UsersTableComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,15 @@ public class UserDto extends DtoWithId {
     private String phone;
     private Date birthDate;
 
+    public UserDto(Integer id, String firstName, String lastName, String email, String phone, Date birthDate) {
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.birthDate = birthDate;
+    }
+
     public String getFirstName() {
         return firstName;
     }

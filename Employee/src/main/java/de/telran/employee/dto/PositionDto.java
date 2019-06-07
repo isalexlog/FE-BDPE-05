@@ -3,6 +3,7 @@ package de.telran.employee.dto;
 public class PositionDto extends DtoWithId {
 
     public PositionDto() {
+        super();
     }
 
     public PositionDto(Integer value, String display) {
