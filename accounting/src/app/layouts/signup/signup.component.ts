@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserDto} from '../../dto/UserDto';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,9 +9,19 @@ import {UserDto} from '../../dto/UserDto';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+  }
+
+  onUserSubmit(userDto: UserDto) {
+    console.log(userDto);
+    this.userService.create(userDto).subscribe(
+      (newUser: UserDto) => {
+        console.log('Created user');
+        console.log(newUser);
+      }
+    );
   }
 
 }

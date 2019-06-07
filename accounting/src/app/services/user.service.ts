@@ -13,6 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   create(user: UserDto) {
+    return this.http.post<UserDto>(this.userUrl, user);
   }
 
   update(user: UserDto): Observable<UserDto> {

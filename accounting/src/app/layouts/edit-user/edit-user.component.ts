@@ -15,7 +15,7 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit() {
     this.userDto = {
-      id: '1',
+      id: '2',
       firstName: 'Vasya',
       lastName: 'Pupkin',
       birthDate: '1980-01-01',
@@ -27,8 +27,9 @@ export class EditUserComponent implements OnInit {
   onUserSubmit(userDto: UserDto) {
     console.log(userDto);
     this.userService.update(userDto).subscribe(
-      userDto => {
-        console.log(userDto);
+      (updatedUser: UserDto) => {
+        console.log('Updated user');
+        console.log(updatedUser);
       }
     );
   }
