@@ -28,6 +28,12 @@ public class UserController {
 
     @GetMapping("")
     public List<UserDto> updateUser() {
+        if (randomBoolean())
+            throw new RuntimeException("All bad");
         return userRepository.getAllRecords();
+    }
+
+    public boolean randomBoolean(){
+        return Math.random() < 0.5;
     }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {UserDto} from '../dto/UserDto';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {retry} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,9 @@ export class UserService {
   }
 
   getAll(): Observable<UserDto[]> {
-    return this.http.get<UserDto[]>(this.userUrl);
+    return this.http.get<UserDto[]>(this.userUrl)
+      .pipe(
+      retry(15)
+    );
   }
 }
