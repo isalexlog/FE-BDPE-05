@@ -10,13 +10,16 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { UserFormComponent } from './components/user-form/user-form.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './layouts/signup/signup.component';
 import { EditUserComponent } from './layouts/edit-user/edit-user.component';
 import { ValidationErrorComponent } from './components/validation-error/validation-error.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './layouts/users/users.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
+import { LessonActionsComponent } from './layouts/lesson-actions/lesson-actions.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
     EditUserComponent,
     ValidationErrorComponent,
     UsersComponent,
-    UsersTableComponent
+    UsersTableComponent,
+    LessonActionsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,9 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
     MatMenuModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DropdownModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
