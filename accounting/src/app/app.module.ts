@@ -20,6 +20,9 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
 import { LessonActionsComponent } from './layouts/lesson-actions/lesson-actions.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LessonCreatorComponent } from './components/lesson-creator/lesson-creator.component';
+import { SubjectSelectorComponent } from './components/subject-selector/subject-selector.component';
+import { LessonFormComponent } from './components/lesson-form/lesson-form.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ValidationErrorComponent,
     UsersComponent,
     UsersTableComponent,
-    LessonActionsComponent
+    LessonActionsComponent,
+    LessonCreatorComponent,
+    SubjectSelectorComponent,
+    LessonFormComponent
   ],
   imports: [
     BrowserModule,

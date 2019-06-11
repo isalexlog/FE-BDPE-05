@@ -62,4 +62,8 @@ Add this field to EmployeeDto in Java part of the project
 - validation errors components
 - UserService (http)
 
+2019-06-11 In class: Creating lesson-creator component with select-group element
+
+Home work: create select module element and enable once date for this element are
+available (see implementation select group element)
 
