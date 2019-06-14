@@ -118,5 +118,10 @@ export class SubjectSelectorComponent implements OnInit {
     );
   }
 
+  onSubjectSelect($event: any){
+    console.log(event);
+  }
+
+
 
 }
