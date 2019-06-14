@@ -1,1 +1,3 @@
-<p-dropdown [options]="groups" [(ngModel)]="selectedCity1" (onChange)="onChange($event)"></p-dropdown>
+<p-dropdown [options]="groups" (onChange)="onGroupSelect($event)"></p-dropdown>
+
+<p-dropdown [disabled]="!modules" [options]="modules" (onChange)="onModuleSelect($event)"></p-dropdown>
