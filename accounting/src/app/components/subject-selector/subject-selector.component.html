@@ -1,3 +1,5 @@
 <p-dropdown [options]="groups" (onChange)="onGroupSelect($event)"></p-dropdown>
 
 <p-dropdown [disabled]="!modules" [options]="modules" (onChange)="onModuleSelect($event)"></p-dropdown>
+
+<p-dropdown [disabled]="!subjects" [options]="subjects" (onChange)="onSubjectSelect($event)"></p-dropdown>
