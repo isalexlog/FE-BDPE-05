@@ -4,6 +4,8 @@ import {GroupService} from '../../services/group.service';
 import {GroupDto} from '../../dto/GroupDto';
 import {ModuleService} from '../../services/module.service';
 import {ModuleDto} from '../../dto/ModuleDto';
+import {SubjectService} from '../../services/subject.service';
+import {SubjectDto} from '../../dto/SubjectDto';
 
 
 @Component({
@@ -15,9 +17,11 @@ export class SubjectSelectorComponent implements OnInit {
 
   groups: SelectItem[];
   modules: SelectItem[];
+  subjects: SelectItem[];
 
   constructor(private groupService: GroupService,
-              private moduleService: ModuleService) {
+              private moduleService: ModuleService,
+              private subjectService: SubjectService) {
   }
 
   ngOnInit() {
@@ -49,8 +53,16 @@ export class SubjectSelectorComponent implements OnInit {
     ];
   }
 
+  convertSubjectDto2SelectItem(subjectDto: SubjectDto[]): SelectItem[] {
+    return [
+      {label: 'Select subject', value: null},
+      ...subjectDto.map(subject => ({label: subject.name, value: subject.id}))
+    ];
+  }
+
   onGroupSelect($event: any) {
     this.modules = null;
+    this.subjects = null;
     console.log($event);
     if ($event.value === null) {
       return;
@@ -79,7 +91,38 @@ export class SubjectSelectorComponent implements OnInit {
   }
 
   onModuleSelect($event: any) {
+    this.subjects = null;
     console.log($event);
+    if ($event.value === null) {
+      return;
+    }
+    this.subjectService.getSubjects($event.value).subscribe(
+      (subjectDto: SubjectDto[]) => {
+        this.subjects = this.convertSubjectDto2SelectItem(subjectDto);
+      },
+      (error: any) => {
+
+        if ($event.value === 2) {
+          this.subjects = this.convertSubjectDto2SelectItem([
+            {name: 'Subject 1', id: 1},
+            {name: 'Subject 2', id: 2},
+            {name: 'Subject 3', id: 3},
+            {name: 'Subject 4', id: 4}
+          ]);
+        } else {
+          this.subjects = this.convertSubjectDto2SelectItem([
+            {name: 'Subject 22', id: 17},
+            {name: 'Subject 43', id: 32}
+          ]);
+        }
+      }
+    );
   }
+
+  onSubjectSelect($event: any){
+    console.log(event);
+  }
+
+
 
 }
