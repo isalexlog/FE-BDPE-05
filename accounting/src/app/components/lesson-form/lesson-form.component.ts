@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserDto} from '../../dto/UserDto';
 import {LessonDto} from '../../dto/LessonDto';
 
 @Component({
@@ -19,7 +18,7 @@ export class LessonFormComponent implements OnInit {
   lessonDto: LessonDto;
 
   @Output()
-  submitLesson: EventEmitter<UserDto> = new EventEmitter();
+  submitLesson: EventEmitter<LessonDto> = new EventEmitter();
 
   constructor(private fb: FormBuilder) {
   }
