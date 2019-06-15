@@ -18,6 +18,7 @@ export class SubjectSelectorComponent implements OnInit {
   groups: SelectItem[];
   modules: SelectItem[];
   subjects: SelectItem[];
+  ides: number[];
 
   constructor(private groupService: GroupService,
               private moduleService: ModuleService,
@@ -64,6 +65,7 @@ export class SubjectSelectorComponent implements OnInit {
     this.modules = null;
     this.subjects = null;
     console.log($event);
+    this.onSubjectSelectorChange($event.valueOf());
     if ($event.value === null) {
       return;
     }
@@ -121,6 +123,11 @@ export class SubjectSelectorComponent implements OnInit {
 
   onSubjectSelect($event: any){
     console.log(event);
+  }
+
+  onSubjectSelectorChange(ids: number) {
+    this.ides[0] = 55;
+    console.log(this.ides[0]);
   }
 
 
