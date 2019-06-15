@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">First name</th>
+    <th scope="col">Last name</th>
+    <th scope="col">Presence</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <th scope="row">{{ user.id }}</th>
+    <td>{{ user.firstName }}</td>
+    <td>{{ user.lastName }}</td>
+    <td> <p-checkbox name="attendance" [value]="user.id" [(ngModel)]="selectedValues"></p-checkbox></td>
+  </tr>
+  </tbody>
+</table>
+
+<button (click)="onSaveButtonClick($event)">Save</button>

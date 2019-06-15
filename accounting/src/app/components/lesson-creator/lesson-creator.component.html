@@ -1,2 +1,15 @@
 <app-subject-selector></app-subject-selector>
 <app-lesson-form></app-lesson-form>
+
+<!--
+$event
+requiredIds
+{
+  groupId: 1,
+  moduleId: 2,
+  subjectId:3
+}
+
+<app-subject-selector (subjectSelectorOutput)="onSubjectSelectorChange($event)"></app-subject-selector>
+<app-lesson-form [requiredIds]="this.requiredIds"></app-lesson-form>
+-->

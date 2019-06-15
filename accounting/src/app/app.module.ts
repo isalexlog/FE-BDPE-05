@@ -23,6 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LessonCreatorComponent } from './components/lesson-creator/lesson-creator.component';
 import { SubjectSelectorComponent } from './components/subject-selector/subject-selector.component';
 import { LessonFormComponent } from './components/lesson-form/lesson-form.component';
+import { AttendanceTableComponent } from './components/attendance-table/attendance-table.component';
+import {CheckboxModule} from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { LessonFormComponent } from './components/lesson-form/lesson-form.compon
     LessonActionsComponent,
     LessonCreatorComponent,
     SubjectSelectorComponent,
-    LessonFormComponent
+    LessonFormComponent,
+    AttendanceTableComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { LessonFormComponent } from './components/lesson-form/lesson-form.compon
     FormsModule,
     HttpClientModule,
     DropdownModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

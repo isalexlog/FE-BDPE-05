@@ -16,4 +16,7 @@ export class LessonActionsComponent implements OnInit {
   ngOnInit() {
   }
 
+  onAttendanceChange($event: []) {
+    console.log($event);
+  }
 }
