@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {SelectItem} from 'primeng/api';
 import {GroupService} from '../../services/group.service';
 import {GroupDto} from '../../dto/GroupDto';
@@ -6,6 +6,7 @@ import {ModuleService} from '../../services/module.service';
 import {ModuleDto} from '../../dto/ModuleDto';
 import {SubjectService} from '../../services/subject.service';
 import {SubjectDto} from '../../dto/SubjectDto';
+import {RequiredIds} from "../lesson-creator/requiredIds";
 
 
 @Component({
@@ -18,6 +19,14 @@ export class SubjectSelectorComponent implements OnInit {
   groups: SelectItem[];
   modules: SelectItem[];
   subjects: SelectItem[];
+
+  requiredIds: RequiredIds = {};
+
+  @Output()
+  subjectSelectorOutput = new EventEmitter<RequiredIds>();
+  selectedGroup: any;
+  selectedModule: any;
+  selectedSubject: any;
 
   constructor(private groupService: GroupService,
               private moduleService: ModuleService,
@@ -61,7 +70,10 @@ export class SubjectSelectorComponent implements OnInit {
   }
 
   onGroupSelect($event: any) {
+    this.subjectSelectorOutput.emit(null);
+    this.requiredIds.groupId = $event.value;
     this.modules = null;
+    this.selectedModule = null;
     this.subjects = null;
     console.log($event);
     if ($event.value === null) {
@@ -91,8 +103,10 @@ export class SubjectSelectorComponent implements OnInit {
   }
 
   onModuleSelect($event: any) {
+    this.subjectSelectorOutput.emit(null);
+    this.requiredIds.moduleId = $event.value;
     this.subjects = null;
-    console.log($event);
+    this.selectedSubject = null;
     if ($event.value === null) {
       return;
     }
@@ -120,9 +134,7 @@ export class SubjectSelectorComponent implements OnInit {
   }
 
   onSubjectSelect($event: any){
-    console.log(event);
+    this.requiredIds.subjectId = $event.value;
+    this.subjectSelectorOutput.emit(this.requiredIds);
   }
-
-
-
 }

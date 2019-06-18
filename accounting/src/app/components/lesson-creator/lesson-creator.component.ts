@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RequiredIds} from "./requiredIds";
 
 @Component({
   selector: 'app-lesson-creator',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LessonCreatorComponent implements OnInit {
 
+  requiredIds: RequiredIds;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSubjectSelectorChange($event: RequiredIds) {
+    console.log($event);
+    this.requiredIds = $event;
+
+  }
 }
