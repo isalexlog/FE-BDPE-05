@@ -1,7 +1,7 @@
 export interface LessonDto {
-  id: number;
-  thema: string;
-  subject: number;
-  date: Date;
-  group: number;
+  id?: number;
+  thema?: string;
+  subjectId?: number;
+  date?: Date;
+  groupId?: number;
 }

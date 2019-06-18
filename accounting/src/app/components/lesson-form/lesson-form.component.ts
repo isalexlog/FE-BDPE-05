@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LessonDto} from '../../dto/LessonDto';
+import {RequiredIds} from "../lesson-creator/requiredIds";
 
 @Component({
   selector: 'app-lesson-form',
@@ -9,13 +10,36 @@ import {LessonDto} from '../../dto/LessonDto';
 })
 export class LessonFormComponent implements OnInit {
 
-  lessonForm: FormGroup;
+  lessonForm: FormGroup = this.fb.group({
+    id: [],
+    groupId: [],
+    subjectId: [],
+    thema: [
+      null, [
+        Validators.required
+      ]
+    ],
+    date: [
+      null, [
+        Validators.required
+      ]
+    ],
+
+  });
 
   @Input()
   submitButtonLabel = 'Save';
 
+
+  _lesson: LessonDto;
+
   @Input()
-  lessonDto: LessonDto;
+  set lesson(lesson: LessonDto) {
+    this._lesson = lesson;
+    if (lesson) {
+      this.lessonForm.setValue(lesson);
+    }
+  }
 
   @Output()
   submitLesson: EventEmitter<LessonDto> = new EventEmitter();
@@ -23,38 +47,8 @@ export class LessonFormComponent implements OnInit {
   constructor(private fb: FormBuilder) {
   }
   ngOnInit() {
-    this.createForm();
-  }
-
-  createForm() {
-    this.lessonForm = this.fb.group({
-      id: [
-        null
-      ],
-      thema: [
-        null, [
-          Validators.required
-        ]
-      ],
-      subjectId: [
-        null, [
-          Validators.required
-        ]
-      ],
-      date: [
-        null, [
-          Validators.required
-        ]
-      ],
-      groupId: [
-        null, [
-          Validators.required
-        ]
-      ],
-    });
-
-    if (this.lessonDto) {
-      this.lessonForm.setValue(this.lessonDto);
+    if (this._lesson) {
+      this.lessonForm.setValue(this._lesson);
     }
   }
 

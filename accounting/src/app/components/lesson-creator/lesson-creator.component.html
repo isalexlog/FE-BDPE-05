@@ -1,17 +1,9 @@
 <app-subject-selector (subjectSelectorOutput)="onSubjectSelectorChange($event)">
 </app-subject-selector>
-<app-lesson-form [hidden]="!requiredIds">
-</app-lesson-form>
 
-<!--
-$event
-requiredIds
-{
-  groupId: 1,
-  moduleId: 2,
-  subjectId:3
-}
+<app-lesson-form
+  [lesson]="lessonDto"
+  [hidden]="!requiredIds"
+  (submitLesson)="onSubmitLesson($event)"
+></app-lesson-form>
 
-<app-subject-selector (subjectSelectorOutput)="onSubjectSelectorChange($event)"></app-subject-selector>
-<app-lesson-form [requiredIds]="this.requiredIds"></app-lesson-form>
--->
