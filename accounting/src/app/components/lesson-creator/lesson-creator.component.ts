@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {RequiredIds} from "./requiredIds";
-import {LessonDto} from "../../dto/LessonDto";
+import {RequiredIds} from './requiredIds';
+import {LessonDto} from '../../dto/LessonDto';
+import {LessonService} from '../../services/lesson.service';
 
 @Component({
   selector: 'app-lesson-creator',
@@ -12,7 +13,7 @@ export class LessonCreatorComponent implements OnInit {
   requiredIds: RequiredIds;
   lessonDto: LessonDto;
 
-  constructor() { }
+  constructor(private lessonService: LessonService) { }
 
   ngOnInit() {
   }
@@ -33,5 +34,12 @@ export class LessonCreatorComponent implements OnInit {
 
   onSubmitLesson($event: LessonDto) {
     console.log($event);
+    this.lessonService.create($event).subscribe(
+      (newLesson: LessonDto) => {
+        console.log('Created lesson');
+        console.log(newLesson);
+      },
+      (error) => console.log(error)
+    );
   }
 }

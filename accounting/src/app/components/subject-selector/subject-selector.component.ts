@@ -6,7 +6,7 @@ import {ModuleService} from '../../services/module.service';
 import {ModuleDto} from '../../dto/ModuleDto';
 import {SubjectService} from '../../services/subject.service';
 import {SubjectDto} from '../../dto/SubjectDto';
-import {RequiredIds} from "../lesson-creator/requiredIds";
+import {RequiredIds} from '../lesson-creator/requiredIds';
 
 
 @Component({
@@ -125,8 +125,8 @@ export class SubjectSelectorComponent implements OnInit {
           ]);
         } else {
           this.subjects = this.convertSubjectDto2SelectItem([
-            {name: 'Subject 22', id: 17},
-            {name: 'Subject 43', id: 32}
+            {name: 'Subject 22', id: 22},
+            {name: 'Subject 43', id: 43}
           ]);
         }
       }
