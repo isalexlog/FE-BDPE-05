@@ -17,6 +17,7 @@ export class LessonActionsComponent implements OnInit {
   }
 
   onAttendanceChange($event: []) {
-    console.log($event);
+    /*тут?*/
+    console.log($event);  
   }
 }
