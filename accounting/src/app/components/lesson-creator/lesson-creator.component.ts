@@ -39,7 +39,7 @@ export class LessonCreatorComponent implements OnInit {
         console.log('Created lesson');
         console.log(newLesson);
       },
-      (error1) => console.log(error1)
+      (error) => console.log(error)
     );
   }
 }
