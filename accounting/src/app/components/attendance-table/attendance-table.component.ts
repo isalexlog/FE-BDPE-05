@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserDto} from '../../dto/UserDto';
+import {AttendanceService} from '../../services/attendance.service';
+import {AttendanceDto} from '../../dto/AttendanceDto';
 
 @Component({
   selector: 'app-attendance-table',
@@ -8,7 +10,7 @@ import {UserDto} from '../../dto/UserDto';
 })
 export class AttendanceTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private attendanceService: AttendanceService) { }
 
   users: UserDto[];
 
@@ -25,6 +27,13 @@ export class AttendanceTableComponent implements OnInit {
   }
 
   onSaveButtonClick($event) {
+    this.attendanceService.create($event).subscribe(
+      (newAttendance: AttendanceDto) => {
+        console.log('Created attendance list');
+        console.log(newAttendance);
+      },
+      (error) => console.log(error)
+    );
     this.selectedValuesSave.emit(this.selectedValues);
   }
 }
